@@ -57,7 +57,7 @@
 
         <h3>Preprocessing</h3>
                 <p>
-                Now we have accumulated all of the data in one excel sheet. Lets begin with the timestamps (<a href=timestamp.html>What's a timestamp?</a>). These unix-microsecond timestamps need to be converted to excel timestamps so we use this formula <strong>=$A2/86400000000+25569+(5.5/24)</strong> in cell C2 for conversion and drag it by the bottom right handle to apply to the whole column. This can be made into a third column as shown below.
+                Now we have accumulated all of the data in one excel sheet. Lets begin with the timestamps (<a href=timestamps.html>What's a timestamp?</a>). These unix-microsecond timestamps need to be converted to excel timestamps so we use this formula <strong>=$A2/86400000000+25569+(5.5/24)</strong> in cell C2 for conversion and drag it by the bottom right handle to apply to the whole column. This can be made into a third column as shown below.
                 </p>
                 <p><img src="screens/column_c.png"></p>
                 <p>
@@ -74,7 +74,7 @@ Now we have time expressed in excel time (days elapsed since 1-1-1900). This is 
 
                 <h3>Histogram</h3>
                 <p>
-                To find out at what times we are googling, we can create a histogram (<a href=histogram.html>what's a histogram?</a>). In the next column (column E), we create half hour bins to split the times in. An easy way to create 48 bins ranging from 1/48 to 1 is to first fill F2 with 1 and F3 with 2. You can then select them both and drag the bottom right handle to make excel autofill numbers until 48. In E2 fill in <strong>=F2/48</strong> and drag it down until you reach E49. Format the cells in column E with time the same way as column D. You should end up with bins as shown below.
+                To find out at what times we are googling, we can create a histogram (<a href=histograms.html>what's a histogram?</a>). In the next column (column E), we create half hour bins to split the times in. An easy way to create 48 bins ranging from 1/48 to 1 is to first fill F2 with 1 and F3 with 2. You can then select them both and drag the bottom right handle to make excel autofill numbers until 48. In E2 fill in <strong>=F2/48</strong> and drag it down until you reach E49. Format the cells in column E with time the same way as column D. You should end up with bins as shown below.
                 </p>
                 <p><img src="screens/time_bins.png"></p>
                 <p>

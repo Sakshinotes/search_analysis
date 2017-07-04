@@ -31,7 +31,7 @@
 
         <h3>Json to csv</h3>
                 <p>
-                    Once you extract the zip file, you will find some .json (what's Json?) files inside the "Searches" subdirectory. Before we begin our analysis, we must decide on what tools we are to use. In this tutorial, we will use excel/libreoffice. If you are more comfortable with python or r or any other tool, you may follow along using those softwares. 
+                Once you extract the zip file, you will find some .json files inside the "Searches" subdirectory. Before we begin our analysis, we must decide on what tools we are to use. In this tutorial, we will use excel/libreoffice. If you are more comfortable with python or r or any other tool, you may follow along using those softwares. 
                 </p>
                 <p>
                     Excel cannot import json files directly. We must first convert our Json files to a supported format like csv (Comma-Separated Values). <a href=https://konklone.io/json/>This website</a> allows us to easily convert json files to csv format. Open the first Json file in notepad and paste it's contents into the text box as shown below. Be sure to download the csv file and clear the text box before pasting the contents of the next json file.
@@ -44,7 +44,7 @@
                 </p>
                 <p><img src="screens/data_initial.png"></p>
                 <p>
-                    Now open up the next csv file and copy all of the timestamp and search data below the first one. Ensure you do not copy the first row and only copy the data. Repeat for all the csv files. Some of the search queries may have a second or third timestamp, those extra timestamps may be safely deleted. At the end you should have only 2 columns.
+                Now open up the next csv file and copy all of the timestamp and search data below the first one. Ensure you do not copy the first row and only copy the data. Repeat for all the csv files. Some of the search queries may have a second or third timestamp, those extra timestamps may be safely deleted. At the end you should have only 2 columns. You can download my excel file <a href=https://github.com/Sakshinotes/search_analysis/blob/master/search_analysis.xlsx>here</a> for reference. For obvious reasons, my search strings have been removed from the file.
                 </p>
                 <p>
                     Before proceeding further, save the file as an excel workbook as a csv file cannot store excel functions. Go through the data quickly to remove any unwanted data like error messages in the place of timestamps. Some csv files may also end up with search strings in a third column and unnecessary  duplicate timestamps in the second column. These must be fixed (ie. the duplicate timestamps removed and the search queries moved to the second column.) 
@@ -57,7 +57,7 @@
 
         <h3>Preprocessing</h3>
                 <p>
-                    Now we have accumulated all of the data in one excel sheet. Lets begin with the timestamps (What's a timestamp?). These unix-microsecond timestamps need to be converted to excel timestamps so we use this formula =$A2/86400000000+25569+(5.5/24) in cell C2 for conversion and drag it by the bottom right handle to apply to the whole column. This can be made into a third column as shown below.
+                Now we have accumulated all of the data in one excel sheet. Lets begin with the timestamps (<a href=timestamp.html>What's a timestamp?</a>). These unix-microsecond timestamps need to be converted to excel timestamps so we use this formula <strong>=$A2/86400000000+25569+(5.5/24)</strong> in cell C2 for conversion and drag it by the bottom right handle to apply to the whole column. This can be made into a third column as shown below.
                 </p>
                 <p><img src="screens/column_c.png"></p>
                 <p>
@@ -67,14 +67,14 @@ Now we have time expressed in excel time (days elapsed since 1-1-1900). This is 
 
             <h3>Time</h3>
                 <p>
-                    So what can we do with time? First let's strip the dates and just get the times. So we just need the post decimal values of the dates column. Let's move to next column (column d as shown below) and put in the formula =C2-TRUNC(C2) in cell D2 and drag it all the way down to apply to the whole column. For readability, we can format it as shown below.
+                So what can we do with time? First let's strip the dates and just get the times. So we just need the post decimal values of the dates column. Let's move to next column (column d as shown below) and put in the formula <strong>=C2-TRUNC(C2)</strong> in cell D2 and drag it all the way down to apply to the whole column. For readability, we can format it as shown below.
                 </p>
                 <p><img src="screens/column_d.png"></p>
                 <p><img src="screens/column_d_format.png"></p>
 
                 <h3>Histogram</h3>
                 <p>
-                    To find out at what times we are googling, we can create a histogram (what's a histogram). In the next column (column E), we create half hour bins to split the times in. An easy way to create 48 bins ranging from 1/48 to 1 is to first fill F2 with 1 and F3 with 2. You can then select them both and drag the bottom right handle to make excel autofill numbers until 48. In E2 fill in =F2/48 and drag it down until you reach E49. Format the cells in column E with time the same way as column D. You should end up with bins as shown below.
+                To find out at what times we are googling, we can create a histogram (<a href=histogram.html>what's a histogram?</a>). In the next column (column E), we create half hour bins to split the times in. An easy way to create 48 bins ranging from 1/48 to 1 is to first fill F2 with 1 and F3 with 2. You can then select them both and drag the bottom right handle to make excel autofill numbers until 48. In E2 fill in <strong>=F2/48</strong> and drag it down until you reach E49. Format the cells in column E with time the same way as column D. You should end up with bins as shown below.
                 </p>
                 <p><img src="screens/time_bins.png"></p>
                 <p>
@@ -89,7 +89,7 @@ Now we have time expressed in excel time (days elapsed since 1-1-1900). This is 
 
                 <h3>Word frequency</h3>
                 <p>
-                    Next we're going to look at the search strings so go back to the previous worksheet by clicking the tab near the bottom. The words you search for the most can describe a lot about you. You can download an excel file here which contains a macro to list all the individual words and the number of times they occur. Open the wordfrequency.xls and enable macros. Go to the "Developer" menu and click on "Macro Security" and then "Enable all Macros" as shown below. Copy all of the search strings from your excel file to the wordfrequency.xls as shown below.
+                Next we're going to look at the search strings so go back to the previous worksheet by clicking the tab near the bottom. The words you search for the most can describe a lot about you. You can download an excel file <a href=https://github.com/Sakshinotes/search_analysis/blob/master/wordfrequency.xls>here</a> which contains a macro to list all the individual words and the number of times they occur. Open the wordfrequency.xls and enable macros. Go to the "Developer" menu and click on "Macro Security" and then "Enable all Macros" as shown below. Copy all of the search strings from your excel file to the wordfrequency.xls as shown below.
                 </p>
                 <p><img src="screens/wordfrequency_1.png"></p>
                 <p><img src="screens/wordfrequency_2.png"></p>
@@ -106,11 +106,11 @@ Now we have time expressed in excel time (days elapsed since 1-1-1900). This is 
                 </p>
                 <p><img src="screens/interest_1.png"></p>
                 <p>
-                    Next we have to search in each search string for the word "f1" and note down which bin it is in. To check whether a search string has the word "f1" in it, we use the function =COUNTIF($B2,"*"&"f1"&"*") in cell I2 and apply it to the full column as shown below. This will result in a 1 if the search string contains the word "f1" and 0 if it doesn't.
+                Next we have to search in each search string for the word "f1" and note down which bin it is in. To check whether a search string has the word "f1" in it, we use the function <strong>=COUNTIF($B2,"*"&"f1"&"*")</strong> in cell I2 and apply it to the full column as shown below. This will result in a 1 if the search string contains the word "f1" and 0 if it doesn't.
                 </p>
                 <p><img src="screens/interest_2.png"></p>
                 <p>
-Next, we put the formula =I2*C2 in the cell J2 and extend it to the whole column as shown below. This gives us the value of the timestamp when we searched for "f1" or zero ( or 1/0/00 12:00AM) if we didn't.
+                Next, we put the formula <strong>=I2*C2</strong> in the cell J2 and extend it to the whole column as shown below. This gives us the value of the timestamp when we searched for "f1" or zero ( or 1/0/00 12:00AM) if we didn't.
                 </p>
                 <p><img src="screens/interest_3.png"></p>
                 <p>
@@ -122,10 +122,6 @@ Next, we put the formula =I2*C2 in the cell J2 and extend it to the whole column
                     You will see that the first month has a very large frequency, this is because all the zeros from the J column ended up there. To remove this bias, we filter out the first month as shown below.
                  </p>
                 <p><img src="screens/interest_6.png"></p>
-
-                 <p>
-                    In case you were unable to follow, I have also included my excel sheet here (with my search data removed of course)
-                 </p>
                  <p>
                     And that's it for this tutorial but definitely not all can be done with this data. We have only touched the tip of the iceberg of what can be derived from data. Come up with you own analysis and share with us your results and experiences at technalytics@iimu.ac.in 
                  </p>

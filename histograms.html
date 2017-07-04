@@ -4,9 +4,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
         <meta charset="utf-8" />
-        <title>Analyze your Google search data in Excel!</title>
+        <title>What's a histogram?</title>
         <style type="text/css">
-            body{margin:40px auto; max-width:650px; line-height:1.3; background-color:#444444; color:#eeeeee; padding:0 10px;}
+            body{margin:40px auto; max-width:750px; line-height:1.3; background-color:#dddddd; color:#111111; padding:0 10px;}
             header{ text-align:center; }
             h1, h2, h3 { font-family: "Century Gothic", "Aktiv Grotesk", Sans-Serif; line-height:1.2; text-align:center;} 
             input[type=checkbox] {transform: scale(1.5);}
@@ -18,11 +18,17 @@
     </head>
     <body>
         <header>
-            <h1>Analyze your Google search data in Excel!</h1>
-        <h2>Suitable for complete beginners</h2>
+            <h1>What's a histogram?</h1>
         </header>
-
-        
+        <p>
+            A histogram is a graphical representation of the probability distribution of a continuous variable. In this case time is the continuous variable. The first step is to use bins to divide the range of values into intervals. 
+        </p>
+        <p>
+        Bins do not need to be of equal size or non-overlapping but in most cases including this one, the bins are consecutive, equal sized and non overlapping. If the bins are too small, the errors become more significant and if the bins are too large, we get less useful information from the histogram. We are going to use half hour bins as they seem to strike a good balance for bin size but you are welcome to play around with the bin sizes.
+        </p>
+        <p>
+            Time is represented in column D as the fraction of a day. So our bins should be in 1/(24*2) intervals from 0 to 1. 
+        </p>
 
     </body>
 </html>

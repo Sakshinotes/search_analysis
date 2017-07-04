@@ -4,9 +4,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
         <meta charset="utf-8" />
-        <title>Analyze your Google search data in Excel!</title>
+        <title>What's a timestamp?</title>
         <style type="text/css">
-            body{margin:40px auto; max-width:650px; line-height:1.3; background-color:#444444; color:#eeeeee; padding:0 10px;}
+            body{margin:40px auto; max-width:750px; line-height:1.3; background-color:#dddddd; color:#111111; padding:0 10px;}
             header{ text-align:center; }
             h1, h2, h3 { font-family: "Century Gothic", "Aktiv Grotesk", Sans-Serif; line-height:1.2; text-align:center;} 
             input[type=checkbox] {transform: scale(1.5);}
@@ -18,11 +18,28 @@
     </head>
     <body>
         <header>
-            <h1>Analyze your Google search data in Excel!</h1>
-        <h2>Suitable for complete beginners</h2>
+            <h1>What's a timestamp?</h1>
         </header>
-
-        
+        <p>
+            Google search data time stamps are in the unix-microsecond format by default. In this format time is stored as the number of microseconds elapsed since the moment Dennis Ritchie (creator of Unix and the C language, mother of dragons etc.) uttered the words "let there be light", that is 1-1-1970. Excel however expects timestamps in the format of the number of days begining with the wholly unremarkable date of 1-1-1900. 
+        </p>
+        <p>
+            To convert the timestamps to the excel format:
+        </p>
+        <ol>
+            <li>
+                Divide the timestamps with the number of microseconds in a day, that is 86400*1000000
+            </li>
+            <li>
+                Add the number of days between 1-1-1900 and 1-1-1970, that is 25569
+            </li>
+            <li>
+                The timestamps are all set to GMT, to convert to IST, we must add 5 hours and 30 minutes to the timestamps or 5.5/24 days.
+            </li>
+        </ol>
+        <p>
+        Putting these together, in excel the formula is <strong>=$A2/86400000000+25569+(5.5/24)</strong>
+        </p>
 
     </body>
 </html>
